@@ -1,17 +1,19 @@
 import React from 'react';
 import {Form, Button} from 'semantic-ui-react';
-import API from './utils/API';
+import API from '../utils/API';
 
 class api3 extends React.Component
 {
   state = {
       code:'',
       result: null,
-      data:'#'
+      data:'#',
+      visible:false
   }
     submitData = async (e) =>
     {
         e.preventDefault();
+        this.setState({visible: !this.state.visible})
         const code = this.state.code;
         try{
         const result = await API.get(`station-decoder/${code}`);
@@ -54,12 +56,12 @@ class api3 extends React.Component
     <React.Fragment>
         <Form>
         <Form.Field>
-            <label>Station Code</label>
-            <input placeholder='Last Name' onChange={this.changeInStationCode}/>
+            <label>STATION CODE</label>
+            <input placeholder='Code of station' onChange={this.changeInStationCode}/>
         </Form.Field>
-        <Button type='submit' onClick = {(e)=>{this.submitData(e)}}>Submit</Button>
+        <Button type='submit' onClick = {(e)=>{this.submitData(e)}}>Find Station</Button>
         </Form>
-     {postList}
+     {this.state.visible&&<div>{postList}</div>}
     </React.Fragment>
 
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form, Button} from 'semantic-ui-react';
-import API from './utils/API';
+import API from '../utils/API';
 
 class UserForm extends React.Component
 {
@@ -25,7 +25,7 @@ class UserForm extends React.Component
         {
             console.log(e);
         }
-        
+
     }
 
     changeInDestinationForm = (e) =>
@@ -43,7 +43,7 @@ class UserForm extends React.Component
             origin: e.target.value
         });
     }
-    
+
     render()
     {
     return(
@@ -58,15 +58,15 @@ class UserForm extends React.Component
             <input placeholder='Last Name' onChange={this.changeInDestinationForm}/>
         </Form.Field>
         <Form.Field>
-      
+
         </Form.Field>
         <Button type='submit' onClick = {(e)=>{this.submitData(e)}}>Submit</Button>
         </Form>
 
     </React.Fragment>
-            
+
     );
     }
-} 
+}
 
 export default UserForm;
